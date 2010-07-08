@@ -9,15 +9,13 @@ require "rubygems"
 gem 'activeresource'
 require 'active_resource'
 
+ActiveResource::Base.include_root_in_json = true
+
 require 'apphoshies_client/configuration'
-# TODO yml file
-
 @@apphoshies_configuration = ApphoshiesClient::Configuration.new
-@@apphoshies_configuration.username = 'oliver'
-@@apphoshies_configuration.api_key = 'f6bc464e82c04cfa85417d08'
-@@apphoshies_configuration.app_id = 'Apphoshies'
+@@apphoshies_configuration.config
+@@apphoshies_configuration.site = 'https://service.apphoshies.com'
 
-require 'apphoshies_client/finder_methods'
 require 'apphoshies_client/device_token'
 require 'apphoshies_client/document'
 require 'apphoshies_client/message'

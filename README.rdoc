@@ -1,14 +1,14 @@
 = apphoshies_client
 
-* http://github.com/apphoshies/ruby-client
+* http://github.com/apphoshies/apphoshies-ruby-client
 
 == DESCRIPTION:
 
-FIX (describe your package)
+The App Hoshies infrastructure is based on REST Webservices. For your convenience client frameworks are provided to interact with your data.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Documents, Device Tokens, Documents
 
 == SYNOPSIS:
 
@@ -16,11 +16,11 @@ FIX (describe your package)
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* Active Resource
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* [sudo] gem install apphoshies-ruby-client
 
 == LICENSE:
 
