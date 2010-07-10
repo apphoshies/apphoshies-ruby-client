@@ -4,6 +4,7 @@ PostInstall.txt
 README.rdoc
 Rakefile
 lib/apphoshies_client.rb
+lib/apphoshies_client/configuration.rb
 lib/apphoshies_client/device_token.rb
 lib/apphoshies_client/document.rb
 lib/apphoshies_client/message.rb
