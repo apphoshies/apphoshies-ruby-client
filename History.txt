@@ -1,3 +1,10 @@
 === 0.1 2010-07-07
 
 * Initial release
+
+=== 0.2
+
+=== 0.3
+
+* Config loading improvements (for Rails)
+* New helper methods in Document

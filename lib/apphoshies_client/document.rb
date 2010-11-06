@@ -19,4 +19,11 @@ class ApphoshiesClient::Document < ActiveResource::Base
   end
   
   def self.find_one(id); get(id); end
+  
+  def get_value(key)
+    if self.values
+      v = self.values.select {|value_object| value_object.respond_to?(key.to_sym)}
+      return v.first.send(key.to_sym) if v and v.any?
+    end
+  end
 end
