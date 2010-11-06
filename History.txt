@@ -8,3 +8,11 @@
 
 * Config loading improvements (for Rails)
 * New helper methods in Document
+
+=== 0.3.1
+
+* Bugfixes
+
+=== 0.3.9
+
+* Pre-Release for automatic getters/setters on documents

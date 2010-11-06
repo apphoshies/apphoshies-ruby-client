@@ -26,4 +26,27 @@ class ApphoshiesClient::Document < ActiveResource::Base
       return v.first.send(key.to_sym) if v and v.any?
     end
   end
+
+  def set_value(key, value)
+    _values = self.values.collect {|v| v.attributes}
+    if value.is_a?(String)
+      _values << {key => value, "type" => value.class.name.to_s}
+      # TODO check other types!
+    else
+      raise "Value type not supported yet!"
+    end
+    self.values = _values
+  end
+
+  def method_missing(m, *args, &block)
+    unless m.to_s == ('values')
+      _object = get_value(m.to_s)
+      return _object if _object
+    end
+    begin
+      super(m, *args, &block)
+    rescue => e
+      return nil
+    end
+  end
 end
