@@ -1,4 +1,6 @@
 class ApphoshiesClient::DeviceToken < ActiveResource::Base
+  extend ClassMethods
+  
   self.site = @@apphoshies_configuration.site
   self.format = :json
   headers['APH_USERNAME'] = @@apphoshies_configuration.username

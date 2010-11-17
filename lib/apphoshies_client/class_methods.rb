@@ -1,0 +1,2 @@
+module ClassMethods
+end

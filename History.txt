@@ -16,3 +16,8 @@
 === 0.3.9
 
 * Pre-Release for automatic getters/setters on documents
+
+
+=== 0.4.0
+
+* File Upload Support
