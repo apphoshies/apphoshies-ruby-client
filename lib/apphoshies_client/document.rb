@@ -1,19 +1,17 @@
-class ApphoshiesClient::Document < ActiveResource::Base
+class ApphoshiesClient::Document < ApphoshiesClient::Base
   self.site = @@apphoshies_configuration.site
   self.format = :json
   headers['APH_USERNAME'] = @@apphoshies_configuration.username
   headers['APH_API_KEY'] = @@apphoshies_configuration.api_key
-  
+
   def self.all(options = {})
-    get(:all, options)
+    if options and options[:datasource]
+      find_by_datasource(options[:datasource], options)
+    else
+      raise ApphoshiesClient::MissingDatasourceException, 'Please provide a datasource option!'
+    end
   end
 
-  def self.find_by_datasource(datasource, options = {})
-    get(:all, options.merge(:datasource => datasource))
-  end
-  
-  def self.find_one(id); get(id); end
-  
   def get_value(key)
     if self.values
       v = self.values.select {|value_object| value_object.respond_to?(key.to_sym)}
@@ -25,9 +23,16 @@ class ApphoshiesClient::Document < ActiveResource::Base
     _values = self.values.collect {|v| v.attributes}
     if value.is_a?(String)
       _values << {key => value, "type" => value.class.name.to_s}
-      # TODO check other types!
+    elsif value.is_a?(Fixnum)
+      _values << {key => value, "type" => 'Integer'}
+    elsif value.is_a?(Float)
+      _values << {key => value, "type" => 'Float'}
+    elsif value.is_a?(TrueClass) or value.is_a?(FalseClass)
+      _values << {key => value, "type" => 'Boolean'}
+    elsif value.is_a?(DateTime)
+      _values << {key => value, "type" => 'DateTime'}
     else
-      raise "Value type not supported yet!"
+      raise ApphoshiesClient::ValueTypeNotSupportedException
     end
     self.values = _values
   end
@@ -42,18 +47,5 @@ class ApphoshiesClient::Document < ActiveResource::Base
     rescue => e
       return nil
     end
-  end
-  
-  private
-  def self.get(query_symbol, options = {})
-    reload_http_headers
-    return find(query_symbol, :params => {:app_id => @@apphoshies_configuration.app_id}) if query_symbol.is_a?(String)
-    default_options = {:app_id => @@apphoshies_configuration.app_id, :limit => 100}
-    find(:all, :params => default_options.merge(options))
-  end
-  
-  def self.reload_http_headers
-    headers['APH_USERNAME'] = @@apphoshies_configuration.username
-    headers['APH_API_KEY'] = @@apphoshies_configuration.api_key
   end
 end

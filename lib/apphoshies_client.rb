@@ -14,7 +14,7 @@ ActiveResource::Base.include_root_in_json = true
 require 'apphoshies_client/exceptions'
 require 'apphoshies_client/configuration'
 @@apphoshies_configuration = ApphoshiesClient::Configuration.new
-@@apphoshies_configuration.site = 'http://192.168.0.120:3000' # TODO!!!!!!!!!!!!!!!!!!
+@@apphoshies_configuration.site = 'https://service.apphoshies.com'
 @@apphoshies_configuration.username = ''
 @@apphoshies_configuration.api_key = ''
 @@apphoshies_configuration.app_id = ''
@@ -22,11 +22,14 @@ require 'apphoshies_client/configuration'
 require 'apphoshies_client/base'
 require 'apphoshies_client/device_token'
 require 'apphoshies_client/document'
+require 'apphoshies_client/content_item'
+require 'apphoshies_client/user'
+require 'apphoshies_client/tracking_item'
 require 'apphoshies_client/message'
 require 'apphoshies_client/file_upload'
 
-def load_development_configuration
-  @@apphoshies_configuration = ApphoshiesClient::Configuration.new
-	@@apphoshies_configuration.config
-	@@apphoshies_configuration.site = 'http://192.168.0.120:3000' # TODO !!!!!!!!!!! 192.168.0.104
-end
+#def load_development_configuration
+#  @@apphoshies_configuration = ApphoshiesClient::Configuration.new
+#	@@apphoshies_configuration.config
+#	@@apphoshies_configuration.site = 'http://192.168.0.104:3000'
+#end

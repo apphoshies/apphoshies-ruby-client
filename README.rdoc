@@ -13,12 +13,14 @@ Please visit http://apphoshies.com/service for more information.
 * Documents, Device Tokens, Documents, Messages
 
 == SYNOPSIS:
+	Create an apphoshies.yml in the current directory or an .apphoshies.yml file in your home directory
+
 	@@apphoshies_configuration = ApphoshiesClient::Configuration.new
 	@@apphoshies_configuration.config
 
 	document = ApphoshiesClient::Document.find_one(params[:some_id])
-	documents = ApphoshiesClient::Document.all(:limit => 10)
-	
+	documents = ApphoshiesClient::Document.all(:datasource => 'test', :limit => 10)
+
 	Creating a push message for a single device
 	
 	message = ApphoshiesClient::Message.new(:app_id => 'Your App Name', :application_client_key => 'the target device key', :message => 'Your Message')

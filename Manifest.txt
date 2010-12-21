@@ -9,6 +9,9 @@ lib/apphoshies_client/exceptions.rb
 lib/apphoshies_client/base.rb
 lib/apphoshies_client/device_token.rb
 lib/apphoshies_client/document.rb
+lib/apphoshies_client/content_item.rb
+lib/apphoshies_client/tracking_item.rb
+lib/apphoshies_client/user.rb
 lib/apphoshies_client/message.rb
 lib/apphoshies_client/file_upload.rb
 script/console

@@ -22,6 +22,10 @@ class ApphoshiesClient::Base < ActiveResource::Base
     get(:all, options)
   end
 
+  def self.find_by_datasource(datasource, options = {})
+    get(:all, options.merge(:datasource => datasource)) if datasource
+  end
+
   def self.reload_http_headers
     headers['APH_USERNAME'] = @@apphoshies_configuration.username
     headers['APH_API_KEY'] = @@apphoshies_configuration.api_key
