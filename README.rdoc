@@ -4,15 +4,35 @@
 
 == DESCRIPTION:
 
-The App Hoshies infrastructure is based on REST Webservices. For your convenience client frameworks are provided to interact with your data.
+The App Hoshies App Data Cloud is based on REST Webservices. For your convenience client frameworks are provided to interact with your data (iOS/Android/Ruby). At the moment the App Data Cloud is in private beta mode. Please contact support (at) apphoshies (dot) com if you want to try it out.
+
+Please visit http://apphoshies.com/service for more information.
 
 == FEATURES/PROBLEMS:
 
-* Documents, Device Tokens, Documents
+* Documents, Device Tokens, Documents, Messages
 
 == SYNOPSIS:
+	@@apphoshies_configuration = ApphoshiesClient::Configuration.new
+	@@apphoshies_configuration.config
 
-  FIX (code sample of usage)
+	document = ApphoshiesClient::Document.find_one(params[:some_id])
+	documents = ApphoshiesClient::Document.all(:limit => 10)
+	
+	Creating a push message for a single device
+	
+	message = ApphoshiesClient::Message.new(:app_id => 'Your App Name', :application_client_key => 'the target device key', :message => 'Your Message')
+	message.save
+
+	Sending a push message to all devices of an app
+
+	message = ApphoshiesClient::Message.new(:app_id => 'Your App Name', :application_client_key => 'all', :message => 'Your Message')
+	message.save
+	
+	Retrieving a file uploads of a user (identified by the application_client_key of the app installation)
+	
+	file_uploads = ApphoshiesClient::FileUpload.find_by_application_client_key('the target device key', {:document_id => 'document id association'})
+    puts file_uploads.first.url
 
 == REQUIREMENTS:
 

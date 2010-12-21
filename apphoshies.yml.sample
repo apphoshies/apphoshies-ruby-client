@@ -1,0 +1,4 @@
+default:
+  username: YOUR_USERNAME
+  api_key: YOUR_API_KEY
+  app_id: YOUR APP NAME
