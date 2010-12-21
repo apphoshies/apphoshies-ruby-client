@@ -8,3 +8,4 @@ libs =  " -r irb/completion"
 libs <<  " -r #{File.dirname(__FILE__) + '/../lib/apphoshies_client.rb'}"
 puts "Loading apphoshies_client gem"
 exec "#{irb} #{libs} --simple-prompt"
+

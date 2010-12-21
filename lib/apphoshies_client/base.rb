@@ -1,6 +1,11 @@
 class ApphoshiesClient::Base < ActiveResource::Base
   def self.get(query_symbol, options = {})
     reload_http_headers
+    
+    if @@apphoshies_configuration.app_id.blank? or @@apphoshies_configuration.username.blank? or @@apphoshies_configuration.api_key.blank?
+      raise ApphoshiesClient::MissingCredentialsException, 'Username, API Key and App Id required!'
+    end
+
     return find(query_symbol, :params => {:app_id => @@apphoshies_configuration.app_id}) if query_symbol.is_a?(String)
     default_options = {:app_id => @@apphoshies_configuration.app_id, :limit => 100}
     find(:all, :params => default_options.merge(options))

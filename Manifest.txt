@@ -5,6 +5,7 @@ README.rdoc
 Rakefile
 lib/apphoshies_client.rb
 lib/apphoshies_client/configuration.rb
+lib/apphoshies_client/exceptions.rb
 lib/apphoshies_client/base.rb
 lib/apphoshies_client/device_token.rb
 lib/apphoshies_client/document.rb

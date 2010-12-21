@@ -20,7 +20,7 @@ class ApphoshiesClient::Configuration
         puts "Using config in your home directory"
         @config = YAML.load(File.read("#{ENV['HOME']}/.apphoshies.yml"))
       rescue Errno::ENOENT
-        puts ">>> apphoshies.yml expected in current directory or ~/.apphoshies.yml"
+        raise ApphoshiesClient::MissingConfigurationException, "apphoshies.yml expected in current directory or ~/.apphoshies.yml"
       end
     end
   end
